@@ -27,26 +27,27 @@ namespace HalProject
 
             DataTable ordersData = DatabaseAccess.SelectAllOrders();
             
-            // Blake: This is really dumb. I need to figure out how to do this more efficiently, maybe with
+            // This is really dumb. I need to figure out how to do this more efficiently, maybe with
             // DataSources or something using SQL Server. It'll work fine for now but with an increase in the
             // amount of orders this is a really slow way to load them all.
             foreach (DataRow row in ordersData.Rows)
             {
-                int id = Convert.ToInt32(row["Order_Number"]);
-                string r = Convert.ToString(row["Recipient"]);
-                decimal p = Convert.ToDecimal(row["Price"]);
-                int eta = Convert.ToInt32(row["Print_ETA"]);
-                string x = Convert.ToString(row["Printer"]);
-                int s = Convert.ToInt32(row["Status_Code"]);
+                int id      = Convert.ToInt32(row["Order_Number"]);
+                string r    = Convert.ToString(row["Recipient"]);
+                decimal p   = Convert.ToDecimal(row["Price"]);
+                int eta     = Convert.ToInt32(row["Print_ETA"]);
+                string x    = Convert.ToString(row["Printer"]);
+                int s       = Convert.ToInt32(row["Status_Code"]);
 
                 List<Item> list = new List<Item>(); // No. Please. Stop.
 
                 DataTable itemsData = DatabaseAccess.SelectAllItemsInOrder(id);
                 foreach (DataRow row2 in itemsData.Rows)
                 {
-                    string n = Convert.ToString(row2["Item_Name"]);
-                    string url = Convert.ToString(row2["Item_URL"]);
-                    int q = Convert.ToInt32(row2["Item_Quantity"]);
+                    string n    = Convert.ToString(row2["Item_Name"]);
+                    string url  = Convert.ToString(row2["Item_URL"]);
+                    int q       = Convert.ToInt32(row2["Item_Quantity"]);
+
                     list.Add(new Item(n, url, q));
                 }
 

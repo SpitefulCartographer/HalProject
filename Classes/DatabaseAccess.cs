@@ -99,25 +99,10 @@ namespace HalProject.Classes
                     cmd.CommandText = "INSERT INTO Orders VALUES (NULL, @recipient, @price, @eta, @printer, 2)";
                     // The "2" is already a constraint in the database anyway.
 
-                    SQLiteParameter param = cmd.CreateParameter();
-                    param.ParameterName = "@recipient";
-                    param.Value         = order.Recipient;
-                    cmd.Parameters.Add(param);
-
-                    param = cmd.CreateParameter();
-                    param.ParameterName = "@price";
-                    param.Value         = order.Price;
-                    cmd.Parameters.Add(param);
-
-                    param = cmd.CreateParameter();
-                    param.ParameterName = "@eta";
-                    param.Value         = order.PrintETA;
-                    cmd.Parameters.Add(param);
-
-                    param = cmd.CreateParameter();
-                    param.ParameterName = "@printer";
-                    param.Value = order.Printer;
-                    cmd.Parameters.Add(param);
+                    cmd.Parameters.AddWithValue("@recipient", order.Recipient);
+                    cmd.Parameters.AddWithValue("@price", order.Price);
+                    cmd.Parameters.AddWithValue("@eta", order.PrintETA);
+                    cmd.Parameters.AddWithValue("@printer", order.Printer);
 
                     cmd.ExecuteNonQuery();
 
@@ -135,26 +120,11 @@ namespace HalProject.Classes
                 {
                     foreach (Item i in items) {
                         cmd.CommandText = "INSERT INTO Items VALUES (NULL, @orderid, @name, @url, @qty)";
-
-                        SQLiteParameter param = cmd.CreateParameter();
-                        param.ParameterName = "@orderid";
-                        param.Value         = orderNumber;
-                        cmd.Parameters.Add(param);
-
-                        param = cmd.CreateParameter();
-                        param.ParameterName = "@name";
-                        param.Value = i.Name;
-                        cmd.Parameters.Add(param);
-
-                        param = cmd.CreateParameter();
-                        param.ParameterName = "@url";
-                        param.Value = i.Url;
-                        cmd.Parameters.Add(param);
-
-                        param = cmd.CreateParameter();
-                        param.ParameterName = "@qty";
-                        param.Value = i.Quantity;
-                        cmd.Parameters.Add(param);
+                        
+                        cmd.Parameters.AddWithValue("@orderid", orderNumber);
+                        cmd.Parameters.AddWithValue("@name", i.Name);
+                        cmd.Parameters.AddWithValue("@url", i.Url);
+                        cmd.Parameters.AddWithValue("@qty", i.Quantity);
 
                         cmd.ExecuteNonQuery();
                     }

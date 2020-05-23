@@ -32,19 +32,19 @@
             this.orderListbox = new System.Windows.Forms.ListBox();
             this.deleteOrderButton = new System.Windows.Forms.Button();
             this.addOrderButton = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.recipientLabel = new System.Windows.Forms.Label();
+            this.printLabel = new System.Windows.Forms.Label();
+            this.printEtaLabel = new System.Windows.Forms.Label();
+            this.printerLabel = new System.Windows.Forms.Label();
             this.recipientDisplay = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.priceDisplay = new System.Windows.Forms.Label();
+            this.printEtaDisplay = new System.Windows.Forms.Label();
+            this.printerDisplay = new System.Windows.Forms.Label();
             this.itemsGridView = new System.Windows.Forms.DataGridView();
-            this.activeOrderGroupbox = new System.Windows.Forms.GroupBox();
             this.ItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemUrl = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.activeOrderGroupbox = new System.Windows.Forms.GroupBox();
             this.availableOrdersGroupbox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.itemsGridView)).BeginInit();
             this.activeOrderGroupbox.SuspendLayout();
@@ -93,44 +93,44 @@
             this.addOrderButton.UseVisualStyleBackColor = true;
             this.addOrderButton.Click += new System.EventHandler(this.AddOrderButton_Click);
             // 
-            // label1
+            // recipientLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(4, 23);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(86, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Recipient Name:";
+            this.recipientLabel.AutoSize = true;
+            this.recipientLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.recipientLabel.Location = new System.Drawing.Point(4, 23);
+            this.recipientLabel.Name = "recipientLabel";
+            this.recipientLabel.Size = new System.Drawing.Size(86, 13);
+            this.recipientLabel.TabIndex = 0;
+            this.recipientLabel.Text = "Recipient Name:";
             // 
-            // label2
+            // printLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(28, 52);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Total Price:";
+            this.printLabel.AutoSize = true;
+            this.printLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.printLabel.Location = new System.Drawing.Point(28, 52);
+            this.printLabel.Name = "printLabel";
+            this.printLabel.Size = new System.Drawing.Size(61, 13);
+            this.printLabel.TabIndex = 2;
+            this.printLabel.Text = "Total Price:";
             // 
-            // label3
+            // printEtaLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(2, 81);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(87, 13);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Print Time (mins):";
+            this.printEtaLabel.AutoSize = true;
+            this.printEtaLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.printEtaLabel.Location = new System.Drawing.Point(2, 81);
+            this.printEtaLabel.Name = "printEtaLabel";
+            this.printEtaLabel.Size = new System.Drawing.Size(87, 13);
+            this.printEtaLabel.TabIndex = 0;
+            this.printEtaLabel.Text = "Print Time (mins):";
             // 
-            // label4
+            // printerLabel
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(49, 111);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(40, 13);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "Printer:";
+            this.printerLabel.AutoSize = true;
+            this.printerLabel.Location = new System.Drawing.Point(49, 111);
+            this.printerLabel.Name = "printerLabel";
+            this.printerLabel.Size = new System.Drawing.Size(40, 13);
+            this.printerLabel.TabIndex = 10;
+            this.printerLabel.Text = "Printer:";
             // 
             // recipientDisplay
             // 
@@ -140,29 +140,29 @@
             this.recipientDisplay.Size = new System.Drawing.Size(100, 20);
             this.recipientDisplay.TabIndex = 11;
             // 
-            // label5
+            // priceDisplay
             // 
-            this.label5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label5.Location = new System.Drawing.Point(94, 49);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(40, 20);
-            this.label5.TabIndex = 12;
+            this.priceDisplay.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.priceDisplay.Location = new System.Drawing.Point(94, 49);
+            this.priceDisplay.Name = "priceDisplay";
+            this.priceDisplay.Size = new System.Drawing.Size(40, 20);
+            this.priceDisplay.TabIndex = 12;
             // 
-            // label6
+            // printEtaDisplay
             // 
-            this.label6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label6.Location = new System.Drawing.Point(94, 78);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(40, 20);
-            this.label6.TabIndex = 13;
+            this.printEtaDisplay.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.printEtaDisplay.Location = new System.Drawing.Point(94, 78);
+            this.printEtaDisplay.Name = "printEtaDisplay";
+            this.printEtaDisplay.Size = new System.Drawing.Size(40, 20);
+            this.printEtaDisplay.TabIndex = 13;
             // 
-            // label7
+            // printerDisplay
             // 
-            this.label7.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label7.Location = new System.Drawing.Point(94, 108);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(70, 20);
-            this.label7.TabIndex = 14;
+            this.printerDisplay.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.printerDisplay.Location = new System.Drawing.Point(94, 108);
+            this.printerDisplay.Name = "printerDisplay";
+            this.printerDisplay.Size = new System.Drawing.Size(70, 20);
+            this.printerDisplay.TabIndex = 14;
             // 
             // itemsGridView
             // 
@@ -175,24 +175,6 @@
             this.itemsGridView.Name = "itemsGridView";
             this.itemsGridView.Size = new System.Drawing.Size(352, 100);
             this.itemsGridView.TabIndex = 15;
-            // 
-            // activeOrderGroupbox
-            // 
-            this.activeOrderGroupbox.Controls.Add(this.recipientDisplay);
-            this.activeOrderGroupbox.Controls.Add(this.itemsGridView);
-            this.activeOrderGroupbox.Controls.Add(this.label3);
-            this.activeOrderGroupbox.Controls.Add(this.label7);
-            this.activeOrderGroupbox.Controls.Add(this.label2);
-            this.activeOrderGroupbox.Controls.Add(this.label6);
-            this.activeOrderGroupbox.Controls.Add(this.label1);
-            this.activeOrderGroupbox.Controls.Add(this.label5);
-            this.activeOrderGroupbox.Controls.Add(this.label4);
-            this.activeOrderGroupbox.Location = new System.Drawing.Point(191, 12);
-            this.activeOrderGroupbox.Name = "activeOrderGroupbox";
-            this.activeOrderGroupbox.Size = new System.Drawing.Size(366, 300);
-            this.activeOrderGroupbox.TabIndex = 16;
-            this.activeOrderGroupbox.TabStop = false;
-            this.activeOrderGroupbox.Text = "Active Order Information";
             // 
             // ItemName
             // 
@@ -211,6 +193,24 @@
             this.ItemQuantity.HeaderText = "Item Qty.";
             this.ItemQuantity.Name = "ItemQuantity";
             this.ItemQuantity.ReadOnly = true;
+            // 
+            // activeOrderGroupbox
+            // 
+            this.activeOrderGroupbox.Controls.Add(this.recipientDisplay);
+            this.activeOrderGroupbox.Controls.Add(this.itemsGridView);
+            this.activeOrderGroupbox.Controls.Add(this.printEtaLabel);
+            this.activeOrderGroupbox.Controls.Add(this.printerDisplay);
+            this.activeOrderGroupbox.Controls.Add(this.printLabel);
+            this.activeOrderGroupbox.Controls.Add(this.printEtaDisplay);
+            this.activeOrderGroupbox.Controls.Add(this.recipientLabel);
+            this.activeOrderGroupbox.Controls.Add(this.priceDisplay);
+            this.activeOrderGroupbox.Controls.Add(this.printerLabel);
+            this.activeOrderGroupbox.Location = new System.Drawing.Point(191, 12);
+            this.activeOrderGroupbox.Name = "activeOrderGroupbox";
+            this.activeOrderGroupbox.Size = new System.Drawing.Size(366, 300);
+            this.activeOrderGroupbox.TabIndex = 16;
+            this.activeOrderGroupbox.TabStop = false;
+            this.activeOrderGroupbox.Text = "Active Order Information";
             // 
             // MainForm
             // 
@@ -234,14 +234,14 @@
         private System.Windows.Forms.Button addOrderButton;
         private System.Windows.Forms.Button deleteOrderButton;
         private System.Windows.Forms.ListBox orderListbox;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label recipientLabel;
+        private System.Windows.Forms.Label printLabel;
+        private System.Windows.Forms.Label printEtaLabel;
+        private System.Windows.Forms.Label printerLabel;
         private System.Windows.Forms.Label recipientDisplay;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label priceDisplay;
+        private System.Windows.Forms.Label printEtaDisplay;
+        private System.Windows.Forms.Label printerDisplay;
         private System.Windows.Forms.DataGridView itemsGridView;
         private System.Windows.Forms.GroupBox activeOrderGroupbox;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemName;
