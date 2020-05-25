@@ -15,7 +15,6 @@ namespace HalProject
         public MainForm()
         {
             InitializeComponent();
-            itemsGridView.DataSource = ItemsBindingSource;
         }
 
         public void AddOrder(Order o)
@@ -26,18 +25,11 @@ namespace HalProject
 
         public void LoadItemsDataGrid(List<Item> list)
         {
-            DataTable dt = new DataTable();
-            
             foreach (Item i in list)
             {
-                DataRow dr = dt.NewRow();
-                dr["Item_Name"] = i.Name;
-                dr["Item_URL"] = i.Url;
-                dr["Item_Quantity"] = i.Quantity;
-                dt.Rows.Add(dr, dt.Rows.Count);
+                object[] row = { i.Name, i.Url, i.Quantity };
+                itemsGridView.Rows.Add(row);
             }
-
-            ItemsBindingSource.DataSource = dt;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -99,6 +91,7 @@ namespace HalProject
                 priceDisplay.Text = Convert.ToString(o.Price);
                 printEtaDisplay.Text = Convert.ToString(o.PrintETA);
                 printerLabel.Text = Convert.ToString(o.Printer);
+                statusDisplay.Text = Convert.ToString(o.StatusCode);
 
                 LoadItemsDataGrid(o.ItemsList);
             }

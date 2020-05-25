@@ -13,7 +13,7 @@ namespace HalProject.Classes
         public decimal Price { get; set; }
         public int PrintETA { get; set; }
         public string Printer { get; set; }
-        StatusCode StatusCode { get; set; }
+        public StatusCode StatusCode { get; set; }
         public List<Item> ItemsList;
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace HalProject.Classes
 
     }
 
-    enum StatusCode : byte
+    public enum StatusCode : byte
     {
         None,       // Default value. Should not occur naturally.
         Disabled,   // Has errors or has been manually disabled by the user.

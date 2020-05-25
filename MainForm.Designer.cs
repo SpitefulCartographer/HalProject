@@ -169,6 +169,7 @@
             // 
             // itemsGridView
             // 
+            this.itemsGridView.AllowUserToDeleteRows = false;
             this.itemsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.itemsGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ItemName,
@@ -184,6 +185,7 @@
             this.ItemName.HeaderText = "Item Name";
             this.ItemName.Name = "ItemName";
             this.ItemName.ReadOnly = true;
+            this.ItemName.Width = 101;
             // 
             // ItemUrl
             // 
@@ -196,6 +198,7 @@
             this.ItemQuantity.HeaderText = "Item Qty.";
             this.ItemQuantity.Name = "ItemQuantity";
             this.ItemQuantity.ReadOnly = true;
+            this.ItemQuantity.Width = 101;
             // 
             // activeOrderGroupbox
             // 
