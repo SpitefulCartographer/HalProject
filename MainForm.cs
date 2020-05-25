@@ -100,7 +100,7 @@ namespace HalProject
                 printEtaDisplay.Text = Convert.ToString(o.PrintETA);
                 printerLabel.Text = Convert.ToString(o.Printer);
 
-
+                LoadItemsDataGrid(o.ItemsList);
             }
         }
     }
