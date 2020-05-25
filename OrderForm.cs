@@ -70,7 +70,7 @@ namespace HalProject
                 Item i = (Item)itemListbox.SelectedItem;
                 itemNameTextbox.Text = i.Name;
                 itemUrlTextbox.Text = i.Url;
-                itemQuantityTextbox.Text = i.Quantity.ToString();
+                itemQuantityTextbox.Text = Convert.ToString(i.Quantity);
             }
         }
 

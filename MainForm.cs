@@ -10,9 +10,12 @@ namespace HalProject
 {
     public partial class MainForm : Form
     {
+        BindingSource ItemsBindingSource = new BindingSource();
+
         public MainForm()
         {
             InitializeComponent();
+            itemsGridView.DataSource = ItemsBindingSource;
         }
 
         public void AddOrder(Order o)
@@ -21,15 +24,28 @@ namespace HalProject
             DatabaseAccess.InsertOrder(o);
         }
 
+        public void LoadItemsDataGrid(List<Item> list)
+        {
+            DataTable dt = new DataTable();
+            
+            foreach (Item i in list)
+            {
+                DataRow dr = dt.NewRow();
+                dr["Item_Name"] = i.Name;
+                dr["Item_URL"] = i.Url;
+                dr["Item_Quantity"] = i.Quantity;
+                dt.Rows.Add(dr, dt.Rows.Count);
+            }
+
+            ItemsBindingSource.DataSource = dt;
+        }
+
         private void MainForm_Load(object sender, EventArgs e)
         {
             if (!File.Exists("database.db")) DatabaseAccess.InitializeDatabase();
 
             DataTable ordersData = DatabaseAccess.SelectAllOrders();
             
-            // This is really dumb. I need to figure out how to do this more efficiently, maybe with
-            // DataSources or something using SQL Server. It'll work fine for now but with an increase in the
-            // amount of orders this is a really slow way to load them all.
             foreach (DataRow row in ordersData.Rows)
             {
                 int id      = Convert.ToInt32(row["Order_Number"]);
@@ -39,7 +55,7 @@ namespace HalProject
                 string x    = Convert.ToString(row["Printer"]);
                 int s       = Convert.ToInt32(row["Status_Code"]);
 
-                List<Item> list = new List<Item>(); // No. Please. Stop.
+                List<Item> list = new List<Item>();
 
                 DataTable itemsData = DatabaseAccess.SelectAllItemsInOrder(id);
                 foreach (DataRow row2 in itemsData.Rows)
@@ -67,12 +83,25 @@ namespace HalProject
         /// Method for formatting DisplayMembers in the OrderListbox.
         /// Displays order number and recipient information.
         /// </summary>
-        private void OrderListbox_Format(object sender, ListControlConvertEventArgs e)
+        private void orderListbox_Format(object sender, ListControlConvertEventArgs e)
         {
             int number = ((Order)e.ListItem).OrderNumber;
             string recipient = ((Order)e.ListItem).Recipient;
             e.Value = "Order # " + number + "; " + recipient;
         }
 
+        private void orderListbox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (orderListbox.SelectedIndex != -1)
+            {
+                Order o = (Order)orderListbox.SelectedItem;
+                recipientDisplay.Text = o.Recipient;
+                priceDisplay.Text = Convert.ToString(o.Price);
+                printEtaDisplay.Text = Convert.ToString(o.PrintETA);
+                printerLabel.Text = Convert.ToString(o.Printer);
+
+
+            }
+        }
     }
 }

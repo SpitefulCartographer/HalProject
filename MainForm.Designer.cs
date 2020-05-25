@@ -45,6 +45,8 @@
             this.ItemUrl = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.activeOrderGroupbox = new System.Windows.Forms.GroupBox();
+            this.statusLabel = new System.Windows.Forms.Label();
+            this.statusDisplay = new System.Windows.Forms.Label();
             this.availableOrdersGroupbox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.itemsGridView)).BeginInit();
             this.activeOrderGroupbox.SuspendLayout();
@@ -72,7 +74,8 @@
             this.orderListbox.Size = new System.Drawing.Size(149, 199);
             this.orderListbox.TabIndex = 3;
             this.orderListbox.ValueMember = "OrderNumber";
-            this.orderListbox.Format += new System.Windows.Forms.ListControlConvertEventHandler(this.OrderListbox_Format);
+            this.orderListbox.SelectedIndexChanged += new System.EventHandler(this.orderListbox_SelectedIndexChanged);
+            this.orderListbox.Format += new System.Windows.Forms.ListControlConvertEventHandler(this.orderListbox_Format);
             // 
             // deleteOrderButton
             // 
@@ -171,9 +174,9 @@
             this.ItemName,
             this.ItemUrl,
             this.ItemQuantity});
-            this.itemsGridView.Location = new System.Drawing.Point(8, 137);
+            this.itemsGridView.Location = new System.Drawing.Point(7, 147);
             this.itemsGridView.Name = "itemsGridView";
-            this.itemsGridView.Size = new System.Drawing.Size(352, 100);
+            this.itemsGridView.Size = new System.Drawing.Size(345, 100);
             this.itemsGridView.TabIndex = 15;
             // 
             // ItemName
@@ -196,6 +199,8 @@
             // 
             // activeOrderGroupbox
             // 
+            this.activeOrderGroupbox.Controls.Add(this.statusDisplay);
+            this.activeOrderGroupbox.Controls.Add(this.statusLabel);
             this.activeOrderGroupbox.Controls.Add(this.recipientDisplay);
             this.activeOrderGroupbox.Controls.Add(this.itemsGridView);
             this.activeOrderGroupbox.Controls.Add(this.printEtaLabel);
@@ -211,6 +216,23 @@
             this.activeOrderGroupbox.TabIndex = 16;
             this.activeOrderGroupbox.TabStop = false;
             this.activeOrderGroupbox.Text = "Active Order Information";
+            // 
+            // statusLabel
+            // 
+            this.statusLabel.AutoSize = true;
+            this.statusLabel.Location = new System.Drawing.Point(211, 23);
+            this.statusLabel.Name = "statusLabel";
+            this.statusLabel.Size = new System.Drawing.Size(69, 13);
+            this.statusLabel.TabIndex = 16;
+            this.statusLabel.Text = "Order Status:";
+            // 
+            // statusDisplay
+            // 
+            this.statusDisplay.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.statusDisplay.Location = new System.Drawing.Point(286, 20);
+            this.statusDisplay.Name = "statusDisplay";
+            this.statusDisplay.Size = new System.Drawing.Size(67, 20);
+            this.statusDisplay.TabIndex = 17;
             // 
             // MainForm
             // 
@@ -247,6 +269,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemUrl;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemQuantity;
+        private System.Windows.Forms.Label statusLabel;
+        private System.Windows.Forms.Label statusDisplay;
     }
 }
 
