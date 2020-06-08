@@ -10,8 +10,6 @@ namespace HalProject
 {
     public partial class MainForm : Form
     {
-        BindingSource ItemsBindingSource = new BindingSource();
-
         public MainForm()
         {
             InitializeComponent();
@@ -21,15 +19,6 @@ namespace HalProject
         {
             orderListbox.Items.Add(o);
             DatabaseAccess.InsertOrder(o);
-        }
-
-        public void LoadItemsDataGrid(List<Item> list)
-        {
-            foreach (Item i in list)
-            {
-                object[] row = { i.Name, i.Url, i.Quantity };
-                itemsGridView.Rows.Add(row);
-            }
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -71,6 +60,15 @@ namespace HalProject
             }
         }
 
+        private void deleteOrderButton_Click(object sender, EventArgs e)
+        {
+            if (orderListbox.SelectedIndex != -1)
+            {
+
+                orderListbox.Items.Remove(orderListbox.SelectedItem);
+            } 
+        }
+
         /// <summary>
         /// Method for formatting DisplayMembers in the OrderListbox.
         /// Displays order number and recipient information.
@@ -90,11 +88,27 @@ namespace HalProject
                 recipientDisplay.Text = o.Recipient;
                 priceDisplay.Text = Convert.ToString(o.Price);
                 printEtaDisplay.Text = Convert.ToString(o.PrintETA);
-                printerLabel.Text = Convert.ToString(o.Printer);
+                printerDisplay.Text = Convert.ToString(o.Printer);
                 statusDisplay.Text = Convert.ToString(o.StatusCode);
 
-                LoadItemsDataGrid(o.ItemsList);
+                List<Item> itemData = o.ItemsList;
+                itemListbox.DataSource = itemData;
             }
         }
+
+        private void itemListbox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // When the selected item is removed from the list, it sets the SelectedIndex to -1.
+            // This is to prevent NullReferenceException after removing items from the list.
+            if (itemListbox.SelectedIndex != -1)
+            {
+                Item i = (Item)itemListbox.SelectedItem;
+                itemNameDisplay.Text = i.Name;
+                itemUrlDisplay.Text = i.Url;
+                itemQuantityDisplay.Text = Convert.ToString(i.Quantity);
+            }
+        }
+
+
     }
 }

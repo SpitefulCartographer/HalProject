@@ -40,15 +40,17 @@
             this.priceDisplay = new System.Windows.Forms.Label();
             this.printEtaDisplay = new System.Windows.Forms.Label();
             this.printerDisplay = new System.Windows.Forms.Label();
-            this.itemsGridView = new System.Windows.Forms.DataGridView();
-            this.ItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ItemUrl = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ItemQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.activeOrderGroupbox = new System.Windows.Forms.GroupBox();
-            this.statusLabel = new System.Windows.Forms.Label();
+            this.itemQuantityDisplay = new System.Windows.Forms.Label();
+            this.itemNameDisplay = new System.Windows.Forms.Label();
+            this.itemQuantityLabel = new System.Windows.Forms.Label();
+            this.itemUrlLabel = new System.Windows.Forms.Label();
+            this.itemNameLabel = new System.Windows.Forms.Label();
+            this.itemListbox = new System.Windows.Forms.ListBox();
             this.statusDisplay = new System.Windows.Forms.Label();
+            this.statusLabel = new System.Windows.Forms.Label();
+            this.itemUrlDisplay = new System.Windows.Forms.TextBox();
             this.availableOrdersGroupbox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.itemsGridView)).BeginInit();
             this.activeOrderGroupbox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -85,6 +87,7 @@
             this.deleteOrderButton.TabIndex = 2;
             this.deleteOrderButton.Text = "Delete Order";
             this.deleteOrderButton.UseVisualStyleBackColor = true;
+            this.deleteOrderButton.Click += new System.EventHandler(this.deleteOrderButton_Click);
             // 
             // addOrderButton
             // 
@@ -167,45 +170,18 @@
             this.printerDisplay.Size = new System.Drawing.Size(70, 20);
             this.printerDisplay.TabIndex = 14;
             // 
-            // itemsGridView
-            // 
-            this.itemsGridView.AllowUserToDeleteRows = false;
-            this.itemsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.itemsGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ItemName,
-            this.ItemUrl,
-            this.ItemQuantity});
-            this.itemsGridView.Location = new System.Drawing.Point(7, 147);
-            this.itemsGridView.Name = "itemsGridView";
-            this.itemsGridView.Size = new System.Drawing.Size(345, 100);
-            this.itemsGridView.TabIndex = 15;
-            // 
-            // ItemName
-            // 
-            this.ItemName.HeaderText = "Item Name";
-            this.ItemName.Name = "ItemName";
-            this.ItemName.ReadOnly = true;
-            this.ItemName.Width = 101;
-            // 
-            // ItemUrl
-            // 
-            this.ItemUrl.HeaderText = "Item URL";
-            this.ItemUrl.Name = "ItemUrl";
-            this.ItemUrl.ReadOnly = true;
-            // 
-            // ItemQuantity
-            // 
-            this.ItemQuantity.HeaderText = "Item Qty.";
-            this.ItemQuantity.Name = "ItemQuantity";
-            this.ItemQuantity.ReadOnly = true;
-            this.ItemQuantity.Width = 101;
-            // 
             // activeOrderGroupbox
             // 
+            this.activeOrderGroupbox.Controls.Add(this.itemUrlDisplay);
+            this.activeOrderGroupbox.Controls.Add(this.itemQuantityDisplay);
+            this.activeOrderGroupbox.Controls.Add(this.itemNameDisplay);
+            this.activeOrderGroupbox.Controls.Add(this.itemQuantityLabel);
+            this.activeOrderGroupbox.Controls.Add(this.itemUrlLabel);
+            this.activeOrderGroupbox.Controls.Add(this.itemNameLabel);
+            this.activeOrderGroupbox.Controls.Add(this.itemListbox);
             this.activeOrderGroupbox.Controls.Add(this.statusDisplay);
             this.activeOrderGroupbox.Controls.Add(this.statusLabel);
             this.activeOrderGroupbox.Controls.Add(this.recipientDisplay);
-            this.activeOrderGroupbox.Controls.Add(this.itemsGridView);
             this.activeOrderGroupbox.Controls.Add(this.printEtaLabel);
             this.activeOrderGroupbox.Controls.Add(this.printerDisplay);
             this.activeOrderGroupbox.Controls.Add(this.printLabel);
@@ -215,10 +191,73 @@
             this.activeOrderGroupbox.Controls.Add(this.printerLabel);
             this.activeOrderGroupbox.Location = new System.Drawing.Point(191, 12);
             this.activeOrderGroupbox.Name = "activeOrderGroupbox";
-            this.activeOrderGroupbox.Size = new System.Drawing.Size(366, 300);
+            this.activeOrderGroupbox.Size = new System.Drawing.Size(385, 300);
             this.activeOrderGroupbox.TabIndex = 16;
             this.activeOrderGroupbox.TabStop = false;
             this.activeOrderGroupbox.Text = "Active Order Information";
+            // 
+            // itemQuantityDisplay
+            // 
+            this.itemQuantityDisplay.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.itemQuantityDisplay.Location = new System.Drawing.Point(237, 213);
+            this.itemQuantityDisplay.Name = "itemQuantityDisplay";
+            this.itemQuantityDisplay.Size = new System.Drawing.Size(35, 20);
+            this.itemQuantityDisplay.TabIndex = 24;
+            // 
+            // itemNameDisplay
+            // 
+            this.itemNameDisplay.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.itemNameDisplay.Location = new System.Drawing.Point(237, 153);
+            this.itemNameDisplay.Name = "itemNameDisplay";
+            this.itemNameDisplay.Size = new System.Drawing.Size(140, 20);
+            this.itemNameDisplay.TabIndex = 22;
+            // 
+            // itemQuantityLabel
+            // 
+            this.itemQuantityLabel.AutoSize = true;
+            this.itemQuantityLabel.Location = new System.Drawing.Point(182, 214);
+            this.itemQuantityLabel.Name = "itemQuantityLabel";
+            this.itemQuantityLabel.Size = new System.Drawing.Size(49, 13);
+            this.itemQuantityLabel.TabIndex = 21;
+            this.itemQuantityLabel.Text = "Quantity:";
+            // 
+            // itemUrlLabel
+            // 
+            this.itemUrlLabel.AutoSize = true;
+            this.itemUrlLabel.Location = new System.Drawing.Point(176, 184);
+            this.itemUrlLabel.Name = "itemUrlLabel";
+            this.itemUrlLabel.Size = new System.Drawing.Size(55, 13);
+            this.itemUrlLabel.TabIndex = 20;
+            this.itemUrlLabel.Text = "Item URL:";
+            // 
+            // itemNameLabel
+            // 
+            this.itemNameLabel.AutoSize = true;
+            this.itemNameLabel.Location = new System.Drawing.Point(170, 154);
+            this.itemNameLabel.Name = "itemNameLabel";
+            this.itemNameLabel.Size = new System.Drawing.Size(61, 13);
+            this.itemNameLabel.TabIndex = 19;
+            this.itemNameLabel.Text = "Item Name:";
+            // 
+            // itemListbox
+            // 
+            this.itemListbox.DisplayMember = "Name";
+            this.itemListbox.FormattingEnabled = true;
+            this.itemListbox.Location = new System.Drawing.Point(6, 139);
+            this.itemListbox.Name = "itemListbox";
+            this.itemListbox.Size = new System.Drawing.Size(159, 108);
+            this.itemListbox.TabIndex = 18;
+            this.itemListbox.TabStop = false;
+            this.itemListbox.ValueMember = "Name";
+            this.itemListbox.SelectedIndexChanged += new System.EventHandler(this.itemListbox_SelectedIndexChanged);
+            // 
+            // statusDisplay
+            // 
+            this.statusDisplay.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.statusDisplay.Location = new System.Drawing.Point(286, 20);
+            this.statusDisplay.Name = "statusDisplay";
+            this.statusDisplay.Size = new System.Drawing.Size(67, 20);
+            this.statusDisplay.TabIndex = 17;
             // 
             // statusLabel
             // 
@@ -229,13 +268,13 @@
             this.statusLabel.TabIndex = 16;
             this.statusLabel.Text = "Order Status:";
             // 
-            // statusDisplay
+            // itemUrlDisplay
             // 
-            this.statusDisplay.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.statusDisplay.Location = new System.Drawing.Point(286, 20);
-            this.statusDisplay.Name = "statusDisplay";
-            this.statusDisplay.Size = new System.Drawing.Size(67, 20);
-            this.statusDisplay.TabIndex = 17;
+            this.itemUrlDisplay.Location = new System.Drawing.Point(237, 181);
+            this.itemUrlDisplay.Name = "itemUrlDisplay";
+            this.itemUrlDisplay.ReadOnly = true;
+            this.itemUrlDisplay.Size = new System.Drawing.Size(140, 20);
+            this.itemUrlDisplay.TabIndex = 25;
             // 
             // MainForm
             // 
@@ -247,7 +286,6 @@
             this.Name = "MainForm";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.availableOrdersGroupbox.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.itemsGridView)).EndInit();
             this.activeOrderGroupbox.ResumeLayout(false);
             this.activeOrderGroupbox.PerformLayout();
             this.ResumeLayout(false);
@@ -267,13 +305,16 @@
         private System.Windows.Forms.Label priceDisplay;
         private System.Windows.Forms.Label printEtaDisplay;
         private System.Windows.Forms.Label printerDisplay;
-        private System.Windows.Forms.DataGridView itemsGridView;
         private System.Windows.Forms.GroupBox activeOrderGroupbox;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ItemName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ItemUrl;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ItemQuantity;
         private System.Windows.Forms.Label statusLabel;
         private System.Windows.Forms.Label statusDisplay;
+        private System.Windows.Forms.ListBox itemListbox;
+        private System.Windows.Forms.Label itemQuantityDisplay;
+        private System.Windows.Forms.Label itemNameDisplay;
+        private System.Windows.Forms.Label itemQuantityLabel;
+        private System.Windows.Forms.Label itemUrlLabel;
+        private System.Windows.Forms.Label itemNameLabel;
+        private System.Windows.Forms.TextBox itemUrlDisplay;
     }
 }
 

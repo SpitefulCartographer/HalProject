@@ -23,6 +23,7 @@ namespace HalProject.Classes
         /// </summary>
         public Order(string r, decimal p, int eta, string x, List<Item> list)
         {
+            OrderNumber = GetOrderNumber();
             Recipient = r;
             Price = p;
             PrintETA = eta;
@@ -44,6 +45,11 @@ namespace HalProject.Classes
             Printer = x;
             ItemsList = list;
             StatusCode = (StatusCode) s;
+        }
+
+        public static int GetOrderNumber()
+        {
+            return DatabaseAccess.SelectOrdersAutoincrementValue()+1;
         }
 
     }

@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 using System.Data.SQLite;
 
 namespace HalProject.Classes
@@ -74,15 +75,33 @@ namespace HalProject.Classes
                     cmd.CommandText = "SELECT * FROM Items NATURAL JOIN Orders WHERE Order_Number == @id";
 
                     SQLiteParameter param = cmd.CreateParameter();
-                    param.ParameterName = "@id";
-                    param.Value         = i;
-                    cmd.Parameters.Add(param);
+                    cmd.Parameters.AddWithValue("@id", i);
 
                     using (SQLiteDataReader dr = cmd.ExecuteReader()) { 
                         DataTable dt = new DataTable();
                         dt.Load(dr);
                         return dt;
                     }
+                }
+            }
+        }
+
+        public static int SelectOrdersAutoincrementValue()
+        {
+            using (SQLiteConnection con = GetConnection())
+            {
+                con.Open();
+                using (SQLiteCommand cmd = con.CreateCommand())
+                {
+                    cmd.CommandText = "SELECT * FROM sqlite_sequence WHERE name == 'Orders'";
+                    using (SQLiteDataReader dr = cmd.ExecuteReader())
+                    {
+                        DataTable dt = new DataTable();
+                        dt.Load(dr);
+                        foreach (DataRow row in dt.Rows)
+                            return Convert.ToInt32(row["seq"]);
+                    }
+                    return -1;
                 }
             }
         }
@@ -99,14 +118,16 @@ namespace HalProject.Classes
                     cmd.CommandText = "INSERT INTO Orders VALUES (NULL, @recipient, @price, @eta, @printer, 2)";
                     // The "2" is already a constraint in the database anyway.
 
+                    // cmd.Parameters.AddWithValue("@orderid", order.OrderNumber);
                     cmd.Parameters.AddWithValue("@recipient", order.Recipient);
                     cmd.Parameters.AddWithValue("@price", order.Price);
                     cmd.Parameters.AddWithValue("@eta", order.PrintETA);
                     cmd.Parameters.AddWithValue("@printer", order.Printer);
 
                     cmd.ExecuteNonQuery();
+                    int orderNumber = SelectOrdersAutoincrementValue();
 
-                    InsertItems(order.OrderNumber, order.ItemsList.ToArray());
+                    InsertItems(orderNumber, order.ItemsList.ToArray());
                 }
             }
         }
@@ -128,6 +149,19 @@ namespace HalProject.Classes
 
                         cmd.ExecuteNonQuery();
                     }
+                }
+            }
+        }
+
+        public static void DeleteItems(int orderNumber)
+        {
+            using (SQLiteConnection con = GetConnection())
+            {
+                con.Open();
+                using (SQLiteCommand cmd = con.CreateCommand())
+                {
+                    cmd.CommandText = "DELETE FROM Orders WHERE Order_Number == @orderid";
+                    cmd.ExecuteNonQuery();
                 }
             }
         }
