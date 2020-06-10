@@ -153,7 +153,7 @@ namespace HalProject.Classes
             }
         }
 
-        public static void DeleteItems(int orderNumber)
+        public static void DeleteOnOrderNumber(int orderNumber)
         {
             using (SQLiteConnection con = GetConnection())
             {
@@ -161,6 +161,11 @@ namespace HalProject.Classes
                 using (SQLiteCommand cmd = con.CreateCommand())
                 {
                     cmd.CommandText = "DELETE FROM Orders WHERE Order_Number == @orderid";
+                    cmd.Parameters.AddWithValue("@orderid", orderNumber);
+                    cmd.ExecuteNonQuery();
+
+                    cmd.CommandText = "DELETE FROM Items WHERE Order_Number == @orderid";
+                    cmd.Parameters.AddWithValue("@orderid", orderNumber);
                     cmd.ExecuteNonQuery();
                 }
             }

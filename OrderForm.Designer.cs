@@ -37,7 +37,10 @@
             this.deleteItemButton = new System.Windows.Forms.Button();
             this.addItemButton = new System.Windows.Forms.Button();
             this.itemQuantityTextbox = new System.Windows.Forms.TextBox();
+            this.itemQuantityLabel = new System.Windows.Forms.Label();
             this.itemUrlTextbox = new System.Windows.Forms.TextBox();
+            this.itemUrlLabel = new System.Windows.Forms.Label();
+            this.itemNameLabel = new System.Windows.Forms.Label();
             this.itemNameTextbox = new System.Windows.Forms.TextBox();
             this.confirmOrderButton = new System.Windows.Forms.Button();
             this.printerTextbox = new System.Windows.Forms.TextBox();
@@ -45,9 +48,6 @@
             this.printEtaLabel = new System.Windows.Forms.Label();
             this.priceLabel = new System.Windows.Forms.Label();
             this.recipientLabel = new System.Windows.Forms.Label();
-            this.itemQuantityLabel = new System.Windows.Forms.Label();
-            this.itemUrlLabel = new System.Windows.Forms.Label();
-            this.itemNameLabel = new System.Windows.Forms.Label();
             this.itemGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -111,7 +111,7 @@
             this.clearButton.Location = new System.Drawing.Point(148, 106);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(53, 23);
-            this.clearButton.TabIndex = 10;
+            this.clearButton.TabIndex = 6;
             this.clearButton.Text = "Clear All";
             this.clearButton.UseVisualStyleBackColor = true;
             this.clearButton.Click += new System.EventHandler(this.ClearButton_Click);
@@ -121,7 +121,7 @@
             this.deleteItemButton.Location = new System.Drawing.Point(73, 106);
             this.deleteItemButton.Name = "deleteItemButton";
             this.deleteItemButton.Size = new System.Drawing.Size(69, 23);
-            this.deleteItemButton.TabIndex = 9;
+            this.deleteItemButton.TabIndex = 5;
             this.deleteItemButton.Text = "Delete Item";
             this.deleteItemButton.UseVisualStyleBackColor = true;
             this.deleteItemButton.Click += new System.EventHandler(this.DeleteItemButton_Click);
@@ -131,7 +131,7 @@
             this.addItemButton.Location = new System.Drawing.Point(6, 106);
             this.addItemButton.Name = "addItemButton";
             this.addItemButton.Size = new System.Drawing.Size(61, 23);
-            this.addItemButton.TabIndex = 8;
+            this.addItemButton.TabIndex = 4;
             this.addItemButton.Text = "Add Item";
             this.addItemButton.UseVisualStyleBackColor = true;
             this.addItemButton.Click += new System.EventHandler(this.AddItemButton_Click);
@@ -141,23 +141,50 @@
             this.itemQuantityTextbox.Location = new System.Drawing.Point(70, 80);
             this.itemQuantityTextbox.Name = "itemQuantityTextbox";
             this.itemQuantityTextbox.Size = new System.Drawing.Size(30, 20);
-            this.itemQuantityTextbox.TabIndex = 7;
+            this.itemQuantityTextbox.TabIndex = 3;
             this.itemQuantityTextbox.WordWrap = false;
+            // 
+            // itemQuantityLabel
+            // 
+            this.itemQuantityLabel.AutoSize = true;
+            this.itemQuantityLabel.Location = new System.Drawing.Point(18, 83);
+            this.itemQuantityLabel.Name = "itemQuantityLabel";
+            this.itemQuantityLabel.Size = new System.Drawing.Size(49, 13);
+            this.itemQuantityLabel.TabIndex = 10;
+            this.itemQuantityLabel.Text = "Quantity:";
             // 
             // itemUrlTextbox
             // 
             this.itemUrlTextbox.Location = new System.Drawing.Point(70, 50);
             this.itemUrlTextbox.Name = "itemUrlTextbox";
             this.itemUrlTextbox.Size = new System.Drawing.Size(143, 20);
-            this.itemUrlTextbox.TabIndex = 6;
+            this.itemUrlTextbox.TabIndex = 2;
             this.itemUrlTextbox.WordWrap = false;
+            // 
+            // itemUrlLabel
+            // 
+            this.itemUrlLabel.AutoSize = true;
+            this.itemUrlLabel.Location = new System.Drawing.Point(12, 53);
+            this.itemUrlLabel.Name = "itemUrlLabel";
+            this.itemUrlLabel.Size = new System.Drawing.Size(55, 13);
+            this.itemUrlLabel.TabIndex = 8;
+            this.itemUrlLabel.Text = "Item URL:";
+            // 
+            // itemNameLabel
+            // 
+            this.itemNameLabel.AutoSize = true;
+            this.itemNameLabel.Location = new System.Drawing.Point(6, 23);
+            this.itemNameLabel.Name = "itemNameLabel";
+            this.itemNameLabel.Size = new System.Drawing.Size(61, 13);
+            this.itemNameLabel.TabIndex = 7;
+            this.itemNameLabel.Text = "Item Name:";
             // 
             // itemNameTextbox
             // 
             this.itemNameTextbox.Location = new System.Drawing.Point(70, 20);
             this.itemNameTextbox.Name = "itemNameTextbox";
             this.itemNameTextbox.Size = new System.Drawing.Size(143, 20);
-            this.itemNameTextbox.TabIndex = 5;
+            this.itemNameTextbox.TabIndex = 1;
             this.itemNameTextbox.WordWrap = false;
             // 
             // confirmOrderButton
@@ -166,7 +193,7 @@
             this.confirmOrderButton.Location = new System.Drawing.Point(145, 275);
             this.confirmOrderButton.Name = "confirmOrderButton";
             this.confirmOrderButton.Size = new System.Drawing.Size(100, 40);
-            this.confirmOrderButton.TabIndex = 11;
+            this.confirmOrderButton.TabIndex = 0;
             this.confirmOrderButton.Text = "Confirm Order";
             this.confirmOrderButton.UseVisualStyleBackColor = true;
             this.confirmOrderButton.Click += new System.EventHandler(this.ConfirmOrderButton_Click);
@@ -217,33 +244,6 @@
             this.recipientLabel.Size = new System.Drawing.Size(86, 13);
             this.recipientLabel.TabIndex = 0;
             this.recipientLabel.Text = "Recipient Name:";
-            // 
-            // itemQuantityLabel
-            // 
-            this.itemQuantityLabel.AutoSize = true;
-            this.itemQuantityLabel.Location = new System.Drawing.Point(18, 83);
-            this.itemQuantityLabel.Name = "itemQuantityLabel";
-            this.itemQuantityLabel.Size = new System.Drawing.Size(49, 13);
-            this.itemQuantityLabel.TabIndex = 10;
-            this.itemQuantityLabel.Text = "Quantity:";
-            // 
-            // itemUrlLabel
-            // 
-            this.itemUrlLabel.AutoSize = true;
-            this.itemUrlLabel.Location = new System.Drawing.Point(12, 53);
-            this.itemUrlLabel.Name = "itemUrlLabel";
-            this.itemUrlLabel.Size = new System.Drawing.Size(55, 13);
-            this.itemUrlLabel.TabIndex = 8;
-            this.itemUrlLabel.Text = "Item URL:";
-            // 
-            // itemNameLabel
-            // 
-            this.itemNameLabel.AutoSize = true;
-            this.itemNameLabel.Location = new System.Drawing.Point(6, 23);
-            this.itemNameLabel.Name = "itemNameLabel";
-            this.itemNameLabel.Size = new System.Drawing.Size(61, 13);
-            this.itemNameLabel.TabIndex = 7;
-            this.itemNameLabel.Text = "Item Name:";
             // 
             // OrderForm
             // 

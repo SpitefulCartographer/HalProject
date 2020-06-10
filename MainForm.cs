@@ -21,6 +21,19 @@ namespace HalProject
             DatabaseAccess.InsertOrder(o);
         }
 
+        public void ClearAllDisplays()
+        {
+            recipientDisplay.Text = "";
+            priceDisplay.Text = "";
+            printEtaDisplay.Text = "";
+            printerDisplay.Text = "";
+            statusDisplay.Text = "";
+            itemNameDisplay.Text = "";
+            itemUrlDisplay.Text = "";
+            itemQuantityDisplay.Text = "";
+            itemListbox.DataSource = null;
+        }
+
         private void MainForm_Load(object sender, EventArgs e)
         {
             if (!File.Exists("database.db")) DatabaseAccess.InitializeDatabase();
@@ -64,8 +77,10 @@ namespace HalProject
         {
             if (orderListbox.SelectedIndex != -1)
             {
-
+                int orderNumber = ((Order)orderListbox.SelectedItem).OrderNumber;
+                DatabaseAccess.DeleteOnOrderNumber(orderNumber);
                 orderListbox.Items.Remove(orderListbox.SelectedItem);
+                ClearAllDisplays();
             } 
         }
 
@@ -108,7 +123,5 @@ namespace HalProject
                 itemQuantityDisplay.Text = Convert.ToString(i.Quantity);
             }
         }
-
-
     }
 }

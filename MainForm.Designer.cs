@@ -41,6 +41,7 @@
             this.printEtaDisplay = new System.Windows.Forms.Label();
             this.printerDisplay = new System.Windows.Forms.Label();
             this.activeOrderGroupbox = new System.Windows.Forms.GroupBox();
+            this.itemUrlDisplay = new System.Windows.Forms.TextBox();
             this.itemQuantityDisplay = new System.Windows.Forms.Label();
             this.itemNameDisplay = new System.Windows.Forms.Label();
             this.itemQuantityLabel = new System.Windows.Forms.Label();
@@ -49,7 +50,6 @@
             this.itemListbox = new System.Windows.Forms.ListBox();
             this.statusDisplay = new System.Windows.Forms.Label();
             this.statusLabel = new System.Windows.Forms.Label();
-            this.itemUrlDisplay = new System.Windows.Forms.TextBox();
             this.availableOrdersGroupbox.SuspendLayout();
             this.activeOrderGroupbox.SuspendLayout();
             this.SuspendLayout();
@@ -196,6 +196,14 @@
             this.activeOrderGroupbox.TabStop = false;
             this.activeOrderGroupbox.Text = "Active Order Information";
             // 
+            // itemUrlDisplay
+            // 
+            this.itemUrlDisplay.Location = new System.Drawing.Point(237, 181);
+            this.itemUrlDisplay.Name = "itemUrlDisplay";
+            this.itemUrlDisplay.ReadOnly = true;
+            this.itemUrlDisplay.Size = new System.Drawing.Size(140, 20);
+            this.itemUrlDisplay.TabIndex = 25;
+            // 
             // itemQuantityDisplay
             // 
             this.itemQuantityDisplay.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -268,14 +276,6 @@
             this.statusLabel.TabIndex = 16;
             this.statusLabel.Text = "Order Status:";
             // 
-            // itemUrlDisplay
-            // 
-            this.itemUrlDisplay.Location = new System.Drawing.Point(237, 181);
-            this.itemUrlDisplay.Name = "itemUrlDisplay";
-            this.itemUrlDisplay.ReadOnly = true;
-            this.itemUrlDisplay.Size = new System.Drawing.Size(140, 20);
-            this.itemUrlDisplay.TabIndex = 25;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -284,6 +284,7 @@
             this.Controls.Add(this.activeOrderGroupbox);
             this.Controls.Add(this.availableOrdersGroupbox);
             this.Name = "MainForm";
+            this.Text = "Hal Project";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.availableOrdersGroupbox.ResumeLayout(false);
             this.activeOrderGroupbox.ResumeLayout(false);
