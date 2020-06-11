@@ -27,7 +27,7 @@ namespace HalProject
             priceDisplay.Text = "";
             printEtaDisplay.Text = "";
             printerDisplay.Text = "";
-            statusDisplay.Text = "";
+            statusComboBox.Text = "";
             itemNameDisplay.Text = "";
             itemUrlDisplay.Text = "";
             itemQuantityDisplay.Text = "";
@@ -104,7 +104,7 @@ namespace HalProject
                 priceDisplay.Text = Convert.ToString(o.Price);
                 printEtaDisplay.Text = Convert.ToString(o.PrintETA);
                 printerDisplay.Text = Convert.ToString(o.Printer);
-                statusDisplay.Text = Convert.ToString(o.StatusCode);
+                statusComboBox.Text = Convert.ToString(o.StatusCode);
 
                 List<Item> itemData = o.ItemsList;
                 itemListbox.DataSource = itemData;
@@ -121,6 +121,18 @@ namespace HalProject
                 itemNameDisplay.Text = i.Name;
                 itemUrlDisplay.Text = i.Url;
                 itemQuantityDisplay.Text = Convert.ToString(i.Quantity);
+            }
+        }
+
+        private void statusComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (orderListbox.SelectedIndex != -1)
+            {
+                int status = statusComboBox.SelectedIndex;
+                int orderNumber = ((Order)orderListbox.SelectedItem).OrderNumber;
+
+                ((Order)orderListbox.SelectedItem).StatusCode = (StatusCode)status;
+                DatabaseAccess.UpdateStatus(status, orderNumber);
             }
         }
     }

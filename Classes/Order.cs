@@ -56,11 +56,10 @@ namespace HalProject.Classes
 
     public enum StatusCode : byte
     {
-        None,       // Default value. Should not occur naturally.
-        Disabled,   // Has errors or has been manually disabled by the user.
+        Disabled,   // Default value. Has errors or has been manually disabled by the user.
         Pending,    // Is waiting to be printed; Default for newly created orders.
         Active,     // Is currently printing.
         Ready,      // Has been printed and is ready to be delivered.
-        Fulfilled   // Has been successfully delivered.
+        Complete    // Has been successfully delivered.
     }
 }

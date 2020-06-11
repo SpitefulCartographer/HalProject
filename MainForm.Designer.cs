@@ -41,6 +41,7 @@
             this.printEtaDisplay = new System.Windows.Forms.Label();
             this.printerDisplay = new System.Windows.Forms.Label();
             this.activeOrderGroupbox = new System.Windows.Forms.GroupBox();
+            this.statusComboBox = new System.Windows.Forms.ComboBox();
             this.itemUrlDisplay = new System.Windows.Forms.TextBox();
             this.itemQuantityDisplay = new System.Windows.Forms.Label();
             this.itemNameDisplay = new System.Windows.Forms.Label();
@@ -48,7 +49,6 @@
             this.itemUrlLabel = new System.Windows.Forms.Label();
             this.itemNameLabel = new System.Windows.Forms.Label();
             this.itemListbox = new System.Windows.Forms.ListBox();
-            this.statusDisplay = new System.Windows.Forms.Label();
             this.statusLabel = new System.Windows.Forms.Label();
             this.availableOrdersGroupbox.SuspendLayout();
             this.activeOrderGroupbox.SuspendLayout();
@@ -172,6 +172,7 @@
             // 
             // activeOrderGroupbox
             // 
+            this.activeOrderGroupbox.Controls.Add(this.statusComboBox);
             this.activeOrderGroupbox.Controls.Add(this.itemUrlDisplay);
             this.activeOrderGroupbox.Controls.Add(this.itemQuantityDisplay);
             this.activeOrderGroupbox.Controls.Add(this.itemNameDisplay);
@@ -179,7 +180,6 @@
             this.activeOrderGroupbox.Controls.Add(this.itemUrlLabel);
             this.activeOrderGroupbox.Controls.Add(this.itemNameLabel);
             this.activeOrderGroupbox.Controls.Add(this.itemListbox);
-            this.activeOrderGroupbox.Controls.Add(this.statusDisplay);
             this.activeOrderGroupbox.Controls.Add(this.statusLabel);
             this.activeOrderGroupbox.Controls.Add(this.recipientDisplay);
             this.activeOrderGroupbox.Controls.Add(this.printEtaLabel);
@@ -195,6 +195,21 @@
             this.activeOrderGroupbox.TabIndex = 16;
             this.activeOrderGroupbox.TabStop = false;
             this.activeOrderGroupbox.Text = "Active Order Information";
+            // 
+            // statusComboBox
+            // 
+            this.statusComboBox.FormattingEnabled = true;
+            this.statusComboBox.Items.AddRange(new object[] {
+            "Disabled",
+            "Pending",
+            "Active",
+            "Ready",
+            "Complete"});
+            this.statusComboBox.Location = new System.Drawing.Point(286, 18);
+            this.statusComboBox.Name = "statusComboBox";
+            this.statusComboBox.Size = new System.Drawing.Size(91, 21);
+            this.statusComboBox.TabIndex = 26;
+            this.statusComboBox.SelectedIndexChanged += new System.EventHandler(this.statusComboBox_SelectedIndexChanged);
             // 
             // itemUrlDisplay
             // 
@@ -259,14 +274,6 @@
             this.itemListbox.ValueMember = "Name";
             this.itemListbox.SelectedIndexChanged += new System.EventHandler(this.itemListbox_SelectedIndexChanged);
             // 
-            // statusDisplay
-            // 
-            this.statusDisplay.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.statusDisplay.Location = new System.Drawing.Point(286, 20);
-            this.statusDisplay.Name = "statusDisplay";
-            this.statusDisplay.Size = new System.Drawing.Size(67, 20);
-            this.statusDisplay.TabIndex = 17;
-            // 
             // statusLabel
             // 
             this.statusLabel.AutoSize = true;
@@ -308,7 +315,6 @@
         private System.Windows.Forms.Label printerDisplay;
         private System.Windows.Forms.GroupBox activeOrderGroupbox;
         private System.Windows.Forms.Label statusLabel;
-        private System.Windows.Forms.Label statusDisplay;
         private System.Windows.Forms.ListBox itemListbox;
         private System.Windows.Forms.Label itemQuantityDisplay;
         private System.Windows.Forms.Label itemNameDisplay;
@@ -316,6 +322,7 @@
         private System.Windows.Forms.Label itemUrlLabel;
         private System.Windows.Forms.Label itemNameLabel;
         private System.Windows.Forms.TextBox itemUrlDisplay;
+        private System.Windows.Forms.ComboBox statusComboBox;
     }
 }
 

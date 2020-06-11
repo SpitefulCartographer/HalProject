@@ -153,6 +153,22 @@ namespace HalProject.Classes
             }
         }
 
+        public static void UpdateStatus(int statusCode, int orderNumber)
+        {
+            using (SQLiteConnection con = GetConnection())
+            {
+                con.Open();
+                using (SQLiteCommand cmd = con.CreateCommand())
+                {
+                    cmd.CommandText = "UPDATE Orders SET Status_Code = @status WHERE Order_Number == @orderid";
+                    cmd.Parameters.AddWithValue("@status", statusCode);
+                    cmd.Parameters.AddWithValue("@orderid", orderNumber);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
         public static void DeleteOnOrderNumber(int orderNumber)
         {
             using (SQLiteConnection con = GetConnection())
